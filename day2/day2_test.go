@@ -1,9 +1,9 @@
 package day2
 
 import (
-    "os"
-    "bufio"
-    "testing"
+	"bufio"
+	"os"
+	"testing"
 )
 
 func BenchmarkCaminitiPart2(b *testing.B) {
@@ -21,9 +21,9 @@ func BenchmarkCaminitiPart2(b *testing.B) {
 		lines = append(lines, scanner.Text())
 	}
 
-    for i := 0; i < b.N; i++ {
-        Part2(lines)
-    }
+	for i := 0; i < b.N; i++ {
+		Part2(lines)
+	}
 }
 
 func BenchmarkKadatzPart2(b *testing.B) {
@@ -41,7 +41,7 @@ func BenchmarkKadatzPart2(b *testing.B) {
 		lines = append(lines, scanner.Text())
 	}
 
-    for i := 0; i < b.N; i++ {
-        Kadatz2(lines)
-    }
+	for i := 0; i < b.N; i++ {
+		Kadatz2(lines)
+	}
 }

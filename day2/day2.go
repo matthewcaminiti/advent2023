@@ -104,16 +104,16 @@ func Part2(lines []string) {
 }
 
 type game struct {
-  id  int
-  bC  int
-  rC  int
-  gC  int
-} 
+	id int
+	bC int
+	rC int
+	gC int
+}
 
 func Kadatz2(lines []string) {
 	var games []game
 
-    for _, line := range lines {
+	for _, line := range lines {
 		name := strings.Split(line, ":")[0]
 		id, _ := strconv.Atoi(strings.Split(name, " ")[1])
 

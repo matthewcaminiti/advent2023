@@ -1,4 +1,4 @@
-package day3
+package day4
 
 import (
 	"bufio"
@@ -7,7 +7,7 @@ import (
 	"testing"
 )
 
-func readfile() string {
+func readFile() string {
 	f, err := os.Open("./input.txt")
 	if err != nil {
 		panic(err)
@@ -25,33 +25,17 @@ func readfile() string {
 }
 
 func BenchmarkCaminitiPart1(b *testing.B) {
-	input := readfile()
+	input := readFile()
 
 	for i := 0; i < b.N; i++ {
 		Part1(input)
 	}
 }
 
-func BenchmarkOptCaminitiPart1(b *testing.B) {
-	input := readfile()
+func BenchmarkCaminitiPart2(b *testing.B) {
+	input := readFile()
 
 	for i := 0; i < b.N; i++ {
-		OptPart1(input)
-	}
-}
-
-func BenchmarkKadatzPart1(b *testing.B) {
-	input := readfile()
-
-	for i := 0; i < b.N; i++ {
-		KadatzPart1(input)
-	}
-}
-
-func BenchmarkOptKadatzPart1(b *testing.B) {
-	input := readfile()
-
-	for i := 0; i < b.N; i++ {
-		OptKadatzPart1(input)
+		Part2(input)
 	}
 }

@@ -98,51 +98,51 @@ func Part1(input string) {
 }
 
 func getLastSymX(lines []string, lastSymX, x, y int) int {
-    if isSymbol(rune(lines[y][x])) {
-        // curr pos is symbol
-        return x
-    }
-    if x < lineLen-1 && isSymbol(rune(lines[y][x+1])) {
-        // symbol right
-        return x + 1
-    }
+	if isSymbol(rune(lines[y][x])) {
+		// curr pos is symbol
+		return x
+	}
+	if x < lineLen-1 && isSymbol(rune(lines[y][x+1])) {
+		// symbol right
+		return x + 1
+	}
 
-    if y > 0 {
-        if x < lineLen-1 && isSymbol(rune(lines[y-1][x+1])) {
-            // symbol top right
-            return x + 1
-        }
-        if isSymbol(rune(lines[y-1][x])) {
-            // symbol above
-            return x
-        }
+	if y > 0 {
+		if x < lineLen-1 && isSymbol(rune(lines[y-1][x+1])) {
+			// symbol top right
+			return x + 1
+		}
+		if isSymbol(rune(lines[y-1][x])) {
+			// symbol above
+			return x
+		}
 
-    }
+	}
 
-    if y < len(lines)-1 {
-        if x < lineLen-1 && isSymbol(rune(lines[y+1][x+1])) {
-            // symbol bottom right
-            return x + 1
-        }
-        if isSymbol(rune(lines[y+1][x])) {
-            // symbol below
-            return x
-        }
-    }
+	if y < len(lines)-1 {
+		if x < lineLen-1 && isSymbol(rune(lines[y+1][x+1])) {
+			// symbol bottom right
+			return x + 1
+		}
+		if isSymbol(rune(lines[y+1][x])) {
+			// symbol below
+			return x
+		}
+	}
 
-    return lastSymX
+	return lastSymX
 }
 
 func getIsTouching(lines []string, x, y int) bool {
-    for i := Max(0, x-1); i <= Min(lineLen-1, x+1); i++ {
-        for j := Max(0, y-1); j <= Min(len(lines)-1, y+1); j++ {
-            if isSymbol(rune(lines[j][i])) {
-                return true
-            }
-        }
-    }
+	for i := Max(0, x-1); i <= Min(lineLen-1, x+1); i++ {
+		for j := Max(0, y-1); j <= Min(len(lines)-1, y+1); j++ {
+			if isSymbol(rune(lines[j][i])) {
+				return true
+			}
+		}
+	}
 
-    return false
+	return false
 }
 
 func OptPart1(input string) {
@@ -151,19 +151,19 @@ func OptPart1(input string) {
 	lineLen = len(lines[0])
 
 	sum := 0
-    for y := 0; y < len(lines); y++ {
+	for y := 0; y < len(lines); y++ {
 		numUsable := false
 		num := ""
-        for x := 0; x < len(lines[y]); x++ {
+		for x := 0; x < len(lines[y]); x++ {
 			if isDigit(rune(lines[y][x])) {
-                if !numUsable {
-                    numUsable = getIsTouching(lines, x, y)
-                }
+				if !numUsable {
+					numUsable = getIsTouching(lines, x, y)
+				}
 				num += string(lines[y][x])
 			} else {
 				if !numUsable {
 					num = ""
-                    continue
+					continue
 				}
 
 				if len(num) > 0 && numUsable {
@@ -249,7 +249,7 @@ func KadatzPart1(input string) {
 func OptKadatzPart1(input string) {
 	lines := strings.Split(input, "\n")
 
-    grid := make([][]rune, len(lines))
+	grid := make([][]rune, len(lines))
 
 	for i, line := range lines {
 		grid[i] = []rune(line)

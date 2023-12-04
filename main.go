@@ -26,12 +26,15 @@ func main() {
 		lines = append(lines, scanner.Text())
 	}
 
+	fmt.Println("== Day 1 ==")
 	// day1.Part1(lines)
 	// day1.Part2(lines)
 
+	fmt.Println("== Day 2 ==")
 	// day2.Part1(lines)
 	// day2.Part2(lines)
 
+	fmt.Println("== Day 3 ==")
 	day3.Part1(lines)
 	day3.Part2(lines)
 }

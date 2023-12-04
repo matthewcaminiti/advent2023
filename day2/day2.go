@@ -76,7 +76,7 @@ func Part2(lines []string) {
 		comps := strings.Split(line, ":")
 
 		roundStrs := strings.Split(comps[1], ";")
-		max_r, max_g, max_b := 0, 0, 0
+        max_r, max_g, max_b := 0, 0, 0
 		for _, s := range roundStrs {
 			draws := strings.Split(s, ",")
 
@@ -96,11 +96,12 @@ func Part2(lines []string) {
 		}
 
 		sum += max_r * max_g * max_b
+        max_r, max_g, max_b = 0, 0, 0
 
 		// fmt.Printf("%s: [%d]\n", line, max_r * max_g * max_b)
 	}
 
-	// fmt.Println("Part2:", sum)
+	// fmt.Println("Part 2:", sum)
 }
 
 type game struct {
@@ -157,4 +158,39 @@ func Kadatz2(lines []string) {
 
 	// fmt.Println("Sum of valid games:")
 	// fmt.Println(sum)
+}
+
+func OptKadatz2(lines []string) {
+	sum := 0
+	for _, line := range lines {
+		game := game{
+			bC: 0,
+			rC: 0,
+			gC: 0,
+		}
+
+		hints := strings.Split(strings.Split(line, ":")[1], ";")
+
+		for _, hint := range hints {
+			pulls := strings.Split(hint, ",")
+			for _, pull := range pulls {
+                comps := strings.Split(strings.TrimSpace(pull), " ")
+
+				pull = comps[1]
+				num, _ := strconv.Atoi(comps[0])
+
+				if pull == "red" && game.rC < num {
+                    game.rC = num
+				} else if pull == "green" && game.gC < num {
+                    game.gC = num
+				} else if pull == "blue" && game.bC < num {
+                    game.bC = num
+				}
+			}
+		}
+
+		sum += game.bC * game.rC * game.gC
+	}
+
+	// fmt.Println("Sum of valid games:", sum)
 }

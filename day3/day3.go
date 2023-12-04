@@ -115,8 +115,8 @@ func Part2(lines []string) {
 		num := ""
 
 		for x, c := range line {
-            hasGear := numUsable && len(num) > 0
-            
+			hasGear := numUsable && len(num) > 0
+
 			if y > 0 && lastGearX <= x {
 				if isAsterisk(lines[y-1][x]) && !hasGear {
 					// asterisk above
@@ -165,40 +165,40 @@ func Part2(lines []string) {
 			} else {
 				if !numUsable {
 					num = ""
-                    continue
+					continue
 				}
 
-                // fmt.Printf("usable number \"%s\", gears: (%v)\n", num, relevantGears)
+				// fmt.Printf("usable number \"%s\", gear: (%d, %d)\n", num, lastGearX, lastGearY)
 
-                k := fmt.Sprintf("%d-%d", lastGearX, lastGearY)
+				k := fmt.Sprintf("%d-%d", lastGearX, lastGearY)
 
-                gear, _ := gears[k]
-                gear = append(gear, num)
-                gears[k] = gear
+				gear, _ := gears[k]
+				gear = append(gear, num)
+				gears[k] = gear
 
-                num = ""
-                numUsable = false
+				num = ""
+				numUsable = false
 			}
 		}
 
 		if numUsable {
-            k := fmt.Sprintf("%d-%d", lastGearX, lastGearY)
+			k := fmt.Sprintf("%d-%d", lastGearX, lastGearY)
 
-            gear, _ := gears[k]
-            gear = append(gear, num)
-            gears[k] = gear
+			gear, _ := gears[k]
+			gear = append(gear, num)
+			gears[k] = gear
 		}
 	}
 
 	for _, v := range gears {
 		if len(v) != 2 {
-            continue
+			continue
 		}
 
-        n1, _ := strconv.Atoi(v[0])
-        n2, _ := strconv.Atoi(v[1])
+		n1, _ := strconv.Atoi(v[0])
+		n2, _ := strconv.Atoi(v[1])
 
-        sum += n1 * n2
+		sum += n1 * n2
 	}
 
 	fmt.Println("Part 2: ", sum)

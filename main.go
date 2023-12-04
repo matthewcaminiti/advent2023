@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"strings"
 
 	// "advent/day1"
 	// "advent/day2"
@@ -25,6 +26,7 @@ func main() {
 	for scanner.Scan() {
 		lines = append(lines, scanner.Text())
 	}
+	input := strings.Join(lines, "\n")
 
 	fmt.Println("== Day 1 ==")
 	// day1.Part1(lines)
@@ -35,6 +37,9 @@ func main() {
 	// day2.Part2(lines)
 
 	fmt.Println("== Day 3 ==")
-	day3.Part1(lines)
+	day3.Part1(input)
+	day3.OptPart1(input)
+	day3.KadatzPart1(input)
+	day3.OptKadatzPart1(input)
 	day3.Part2(lines)
 }

@@ -76,7 +76,7 @@ func Part2(lines []string) {
 		comps := strings.Split(line, ":")
 
 		roundStrs := strings.Split(comps[1], ";")
-        max_r, max_g, max_b := 0, 0, 0
+		max_r, max_g, max_b := 0, 0, 0
 		for _, s := range roundStrs {
 			draws := strings.Split(s, ",")
 
@@ -96,7 +96,7 @@ func Part2(lines []string) {
 		}
 
 		sum += max_r * max_g * max_b
-        max_r, max_g, max_b = 0, 0, 0
+		max_r, max_g, max_b = 0, 0, 0
 
 		// fmt.Printf("%s: [%d]\n", line, max_r * max_g * max_b)
 	}
@@ -174,17 +174,17 @@ func OptKadatz2(lines []string) {
 		for _, hint := range hints {
 			pulls := strings.Split(hint, ",")
 			for _, pull := range pulls {
-                comps := strings.Split(strings.TrimSpace(pull), " ")
+				comps := strings.Split(strings.TrimSpace(pull), " ")
 
 				pull = comps[1]
 				num, _ := strconv.Atoi(comps[0])
 
 				if pull == "red" && game.rC < num {
-                    game.rC = num
+					game.rC = num
 				} else if pull == "green" && game.gC < num {
-                    game.gC = num
+					game.gC = num
 				} else if pull == "blue" && game.bC < num {
-                    game.bC = num
+					game.bC = num
 				}
 			}
 		}

@@ -24,34 +24,50 @@ func readfile() string {
 	return strings.Join(lines, "\n")
 }
 
-func BenchmarkCaminitiPart1(b *testing.B) {
+// func BenchmarkCaminitiPart1(b *testing.B) {
+// 	input := readfile()
+//
+// 	for i := 0; i < b.N; i++ {
+// 		Part1(input)
+// 	}
+// }
+
+func BenchmarkCaminitiPart2(b *testing.B) {
 	input := readfile()
 
 	for i := 0; i < b.N; i++ {
-		Part1(input)
+		Part2(input)
 	}
 }
 
-func BenchmarkOptCaminitiPart1(b *testing.B) {
+// func BenchmarkOptCaminitiPart1(b *testing.B) {
+// 	input := readfile()
+//
+// 	for i := 0; i < b.N; i++ {
+// 		OptPart1(input)
+// 	}
+// }
+
+// func BenchmarkKadatzPart1(b *testing.B) {
+// 	input := readfile()
+//
+// 	for i := 0; i < b.N; i++ {
+// 		KadatzPart1(input)
+// 	}
+// }
+
+// func BenchmarkOptKadatzPart1(b *testing.B) {
+// 	input := readfile()
+//
+// 	for i := 0; i < b.N; i++ {
+// 		OptKadatzPart1(input)
+// 	}
+// }
+
+func BenchmarkDavid2(b *testing.B) {
 	input := readfile()
 
 	for i := 0; i < b.N; i++ {
-		OptPart1(input)
-	}
-}
-
-func BenchmarkKadatzPart1(b *testing.B) {
-	input := readfile()
-
-	for i := 0; i < b.N; i++ {
-		KadatzPart1(input)
-	}
-}
-
-func BenchmarkOptKadatzPart1(b *testing.B) {
-	input := readfile()
-
-	for i := 0; i < b.N; i++ {
-		OptKadatzPart1(input)
+		David2(input)
 	}
 }

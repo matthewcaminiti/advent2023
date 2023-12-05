@@ -39,3 +39,11 @@ func BenchmarkCaminitiPart2(b *testing.B) {
 		Part2(input)
 	}
 }
+
+func BenchmarkKadatzPart2(b *testing.B) {
+	input := readFile()
+
+	for i := 0; i < b.N; i++ {
+		KadatzPart2(input)
+	}
+}

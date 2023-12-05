@@ -1,7 +1,7 @@
 package day4
 
 import (
-	"fmt"
+	// "fmt"
 	"strconv"
 	"strings"
 )
@@ -37,7 +37,7 @@ func Part1(input string) {
 		sum += win
 	}
 
-	fmt.Println("Part 1:", sum)
+	// fmt.Println("Part 1:", sum)
 }
 
 func Part2(input string) {
@@ -81,5 +81,5 @@ func Part2(input string) {
 
 	total += copies[len(copies)-1]
 
-	fmt.Println("Part 2:", total)
+	// fmt.Println("Part 2:", total)
 }

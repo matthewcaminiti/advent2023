@@ -165,13 +165,8 @@ func min(x, y int) int {
 }
 
 func resolveTransitionsRange(tx [][]transition, src int, n int) int {
-	// fmt.Printf("=========\n")
-	// fmt.Println(src, n)
-	// fmt.Println(tx)
-
 	srcR := src + n
 	if len(tx) == 1 {
-		// fmt.Println("\n&&&&& at location:", src, n)
 		for _, transition := range tx[0] {
 			tl, tr := transition.sourceStart, transition.sourceStart+transition.length
 
@@ -180,13 +175,7 @@ func resolveTransitionsRange(tx [][]transition, src int, n int) int {
 					continue
 				}
 
-				if srcR <= tr {
-					return min(src, transition.destStart)
-				}
-
-				if srcR > tr {
-					return min(src, transition.destStart)
-				}
+				return min(src, transition.destStart)
 			} else if src <= tr {
 				if srcR <= tr {
 					return transition.destStart + src - tl
@@ -199,38 +188,57 @@ func resolveTransitionsRange(tx [][]transition, src int, n int) int {
 		return src
 	}
 
+	ranges := [][]int{{src, n}}
+	lowest := 1000000000000000000
 	for _, transition := range tx[0] {
-		tl, tr := transition.sourceStart, transition.sourceStart+transition.length
+		newRanges := [][]int{}
+		for _, _range := range ranges {
+			tl, tr := transition.sourceStart, transition.sourceStart+transition.length
+			rl, rr := _range[0], _range[0]+_range[1]
 
-		if src < tl {
-			if srcR < tl {
-				continue
-			}
+			if rl < tl {
+				if rr < tl {
+					newRanges = append(newRanges, []int{_range[0], _range[1]})
+					continue
+				}
 
-			if srcR <= tr {
-				l := resolveTransitionsRange(tx[1:], src, tl-src)
-				r := resolveTransitionsRange(tx[1:], transition.destStart, srcR-tl)
-				return min(l, r)
-			}
+				if rr <= tr {
+					newRanges = append(newRanges, []int{rl, tl - rl})
+					val := resolveTransitionsRange(tx[1:], transition.destStart, rr-tl)
+					lowest = min(lowest, val)
+					continue
+				}
 
-			if srcR > tr {
-				l := resolveTransitionsRange(tx[1:], src, tl-src)
-				m := resolveTransitionsRange(tx[1:], transition.destStart, transition.length)
-				r := resolveTransitionsRange(tx[1:], tr, srcR-tr)
-				return min(min(l, m), r)
-			}
-		} else if src <= tr {
-			if srcR <= tr {
-				return resolveTransitionsRange(tx[1:], transition.destStart+src-tl, n)
-			}
+				if rr > tr {
+					newRanges = append(newRanges, []int{rl, tl - rl}, []int{tr, rr - tr})
+					val := resolveTransitionsRange(tx[1:], transition.destStart, transition.length)
+					lowest = min(lowest, val)
+				}
+			} else if rl <= tr {
+				if rr <= tr {
+					val := resolveTransitionsRange(tx[1:], transition.destStart+rl-tl, _range[1])
+					lowest = min(lowest, val)
+					continue
+				}
 
-			l := resolveTransitionsRange(tx[1:], transition.destStart+src-tl, tr-src)
-			r := resolveTransitionsRange(tx[1:], tr, srcR-tr)
-			return min(l, r)
+				val := resolveTransitionsRange(tx[1:], transition.destStart+rl-tl, tr-rl)
+				lowest = min(lowest, val)
+				newRanges = append(newRanges, []int{tr, rr - tr})
+			} else {
+				newRanges = append(newRanges, []int{_range[0], _range[1]})
+			}
 		}
+
+		ranges = newRanges
 	}
 
-	return resolveTransitionsRange(tx[1:], src, n)
+	// this code unnecessary for run against input data! (but is logically required)
+	for _, _range := range ranges {
+		val := resolveTransitionsRange(tx[1:], _range[0], _range[1])
+		lowest = min(lowest, val)
+	}
+
+	return lowest
 }
 
 func OptPart2(input string) {

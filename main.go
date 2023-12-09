@@ -58,7 +58,7 @@ func main() {
 	// day8.Part1(input)
 	// day8.Part2(input)
 
-	fmt.Println("== Day 8 ==")
+	fmt.Println("== Day 9 ==")
 	input := file.GetFileContents("./day9/input.txt")
 	day9.Part1(input)
 	day9.Part2(input)

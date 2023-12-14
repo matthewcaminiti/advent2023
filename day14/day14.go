@@ -161,9 +161,9 @@ func Part2(input string) {
 
 		for j := 0; j < len(grids); j++ {
 			if equal(grids[j], nextGrid) {
-                flip := (iterations-j)%(i-j+1)
+				flip := (iterations - j) % (i - j + 1)
 				for k := 0; k < flip; k++ {
-				    nextGrid = compute4Cycle(nextGrid)
+					nextGrid = compute4Cycle(nextGrid)
 				}
 
 				fmt.Println("Part 2:", calcWeight(nextGrid))

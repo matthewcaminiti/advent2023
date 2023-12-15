@@ -17,7 +17,8 @@ import (
 	// "advent/day11"
 	// "advent/day12"
 	// "advent/day13"
-	"advent/day14"
+	// "advent/day14"
+	"advent/day15"
 )
 
 func main() {
@@ -102,10 +103,18 @@ func main() {
 	// day13.Part2(input)
 
 	fmt.Println("== Day 14 ==")
-	test := file.GetFileContents("./day14/test.txt")
-	input := file.GetFileContents("./day14/input.txt")
-	day14.Part1(test)
-	day14.Part1(input)
-	day14.Part2(test)
-	day14.Part2(input)
+	// test := file.GetFileContents("./day14/test.txt")
+	// input := file.GetFileContents("./day14/input.txt")
+	// day14.Part1(test)
+	// day14.Part1(input)
+	// day14.Part2(test)
+	// day14.Part2(input)
+
+	fmt.Println("== Day 15 ==")
+	test := file.GetFileContents("./day15/test.txt")
+	input := file.GetFileContents("./day15/input.txt")
+	day15.Part1(test)
+	day15.Part1(input)
+	day15.Part2(test)
+	day15.Part2(input)
 }

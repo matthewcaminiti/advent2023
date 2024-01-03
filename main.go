@@ -148,6 +148,10 @@ func main() {
 	// input := file.GetFileContents("./day21/input.txt")
 	// day21.Part1(test)
 	// day21.Part1(input)
+	// day21.Part2(test)
+	// day21.Part2(input)
+	// 8632 (low) -- accidental output of test value
+	// 415854224
 
 	fmt.Println("== Day 22 ==")
 	// input := file.GetFileContents("./day22/input.txt")
